@@ -15,7 +15,7 @@ namespace ft {
 	template < class T, class Alloc = std::allocator<T> >
 	class vector {
 	public:
-
+		/* member types */
 		typedef 			T										value_type;
 		typedef 			Alloc									allocator_type;
 
@@ -33,14 +33,14 @@ namespace ft {
 		typedef typename	ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 
 	private:
+		/* attributes */
 		allocator_type	_alloc;
 		pointer			_begin;
 		pointer			_end;
 		pointer			_capacity;
 
 	public:
-	/* CONTRUCTORS */
-
+	/* member function: constructor / destructor */
 		vector(const allocator_type & alloc = allocator_type()) :
 			_alloc(alloc),
 			_begin(nullptr_t),

@@ -56,29 +56,14 @@ namespace ft
 			typedef				ft::reverse_iterator<iterator>									reverse_iterator;
 			typedef				ft::reverse_iterator<const_iterator>							const_reverse_iterator;
 
-		public:
-		/* member functions: constructor / destructor / operator= */
+		/* member function: constructor / destructor */
 
-			/**
-			 * @brief constructor: default
-			 * @note constructs an empty container, with no elements.
-			 * 
-			 * @param comp: binary predicate that, taking two element keys as argument,
-			 * returns true if the first argument goes before the second argument in the strict weak ordering it defines,
-			 * and false otherwise.
-			 * @param alloc: allocator object.
-			 */
+		/* constructs an empty container, with no elements. */
 			explicit map(const key_compare& comp = key_compare(),
 				const allocator_type& alloc = allocator_type()) : _rbt(value_compare(comp)) { (void)alloc; }
 		
-			/**
-			 * @brief constructor: range
-			 * @note constructs a container with as many elements as the range [first, last],
-			 * with each element constructed from its corresponding element in that range.
-			 * 
-			 * @param first, last: input iterators to the initial and final positions in a range.
-			 * @param alloc: allocator object.
-			 */
+			/* constructs a container with as many elements as the range [first, last],
+			 * with each element constructed from its corresponding element in that range. */
 			template <class InputIterator>
 			map(InputIterator first, InputIterator last,
 				const key_compare& comp = key_compare(),
@@ -87,33 +72,19 @@ namespace ft
 					insert(first, last);
 			}
 
-			/**
-			 * @brief constructor: copy
-			 * @note constructs a container with a copy of each of the elements in x.
-			 * 
-			 * @param x: another map object of the same type, whose contents are either copied or acquired.
-			 */
+			/* constructs a container with a copy of each of the elements in x. */
 			map(const map& x) : _rbt(value_compare(key_compare())) {
 				insert(x.begin(), x.end());
 			}
 			
-			/**
-			 * @brief destructor
-			 * @note this destroys all container elements,
-			 * and deallocates all the storage capacity allocated by the map using its allocator.
-			 */
+			/* destroys all container elements,
+			 * and deallocates all the storage capacity allocated by the map using its allocator. */
    			~map(void) {
 				clear();
 				_rbt.destroyNull();
 			}
 
-			/**
-			 * @brief copy container content
-			 * @note copies all the elements from x into the container, changing its size accordingly.
-			 * 
-			 * @param x: a map object of the same type.
-			 * @return *this.
-			 */
+			/* copies all the elements from x into the container, changing its size accordingly. */
 			map& operator=(const map& x) {
 				if (this == &x) return *this;
 
@@ -125,79 +96,38 @@ namespace ft
 
 		/* member functions: iterators */
 
-			/**
-			 * @brief return iterator to beginning
-			 * @note returns an iterator referring to the first element in the map container.
-			 * 
-			 * @return an iterator to the first element in the container.
-			 */
+			/* returns an iterator referring to the first element in the map container. */
 			iterator begin() { return iterator(_rbt.getRoot(), _rbt.min(), _rbt.getNull()); }
 			const_iterator begin() const { return const_iterator(_rbt.getRoot(), _rbt.min(), _rbt.getNull()); }
 			
-			/**
-			 * @brief return iterator to end
-			 * @note returns an iterator referring to the past-the-end element in the map container.
-			 * 
-			 * @return an iterator to the past-the-end element in the container.
-			 */
+			/* returns an iterator referring to the past-the-end element in the map container. */
 			iterator end() { return iterator(_rbt.getRoot(), _rbt.getNull(), _rbt.getNull()); }
 			const_iterator end() const { return const_iterator(_rbt.getRoot(), _rbt.getNull(), _rbt.getNull()); }
 
-			/**
-			 * @brief return reverse iterator to reverse beginning
-			 * @note returns a reverse iterator pointing to the last element in the container (i.e., its reverse beginning).
-			 * 
-			 * @return a reverse iterator to the reverse beginning of the sequence container.
-			 */
+			/* returns a reverse iterator pointing to the last element in the container (i.e., its reverse beginning). */
 			reverse_iterator rbegin() { return reverse_iterator(end()); }
 			const_reverse_iterator rbegin() const { return const_reverse_iterator(end()); }
 
-			/**
-			 * @brief return reverse iterator to reverse end
-			 * @note returns a reverse iterator pointing to the theoretical element right
-			 * before the first element in the map container (which is considered its reverse end).
-			 * 
-			 * @return a reverse iterator to the reverse end of the sequence container.
-			 */
+			/* returns a reverse iterator pointing to the theoretical element right
+			 * before the first element in the map container (which is considered its reverse end). */
 			reverse_iterator rend() { return reverse_iterator(begin()); }
 			const_reverse_iterator rend() const { return const_reverse_iterator(begin()); }
 
 		/* member functions: capacity */
 		
-			/**
-			 * @brief test whether container is empty
-			 * @note returns whether the map container is empty (i.e. whether its size is 0).
-			 * 
-			 * @return true if the container size is 0, false otherwise.
-			 */
+			/* returns whether the map container is empty (i.e. whether its size is 0). */
 			bool		empty() const { return begin() == end(); }
 
-			/**
-			 * @brief return container size
-			 * @note returns the number of elements in the map container.
-			 * 
-			 * @return the number of elements in the container.
-			 */
+			/* returns the number of elements in the map container. */
 			size_type	size() const { return _rbt.size(); }
 
-			/**
-			 * @brief return maximum size
-			 * @note returns the maximum number of elements that the map container can hold.
-			 * 
-			 * @return the maximum number of elements a map container can hold as content.
-			 */
+			/* returns the maximum number of elements that the map container can hold. */
 			size_type	max_size(void) const { return _rbt.max_size(); }
 
 		/* member functions: element access */
 			
-			/**
-			 * @brief access element
-			 * @note if k matches the key of an element in the container,
-			 * the function returns a reference to its mapped value.
-			 * 
-			 * @param k: key value of the element whose mapped value is accessed.
-			 * @return a reference to the mapped value of the element with a key value equivalent to k.
-			 */
+			/* if k matches the key of an element in the container,
+			 * the function returns a reference to its mapped value. */
 			mapped_type& operator[](const key_type& k) { return insert(ft::make_pair(k, mapped_type())).first->second; }
 
 		/* member functions: modifiers */
@@ -408,17 +338,11 @@ namespace ft
 	
 	/* non-member function: map */
 
-		/**
-		 * @brief relational operators for map
-		 * @note performs the appropriate comparison operation between the map containers lhs and rhs.
+		/* performs the appropriate comparison operation between the map containers lhs and rhs.
 		 * a != b : !(a == b)
 		 * a > b  : b < a
 		 * a <= b : !(b < a)
 		 * a >= b : !(a < b)
-		 * 
-		 * @param lhs, rhs: map containers (to the left- and right-hand side of the operator, respectively),
-		 * having both the same template parameters (Key, T, Compare and Alloc).
-		 * @return true if the condition holds, and false otherwise.
 		 */
 		template <class Key, class T, class Compare, class Allocator>
 		bool operator==(const ft::map<Key, T, Compare, Allocator>& lhs,

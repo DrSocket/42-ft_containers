@@ -76,13 +76,7 @@ namespace ft
 			}
 	};
 
-/**
- * @class template: RBT
- */
-
-	/**
-	 * @brief Red Black Tree
-	 */
+/* Red Black Tree */
 	template < class T,
 		class Compare,
 		class Node = ft::RBT_Node<T>,
@@ -90,7 +84,6 @@ namespace ft
 	class RBT {
 		public:
 		/* member types */
-
 			typedef				T										value_type;
 			typedef				Node									node_type;
 
@@ -102,14 +95,19 @@ namespace ft
 			typedef	typename	allocator_type::pointer					pointer;
 			typedef	typename	allocator_type::const_pointer			const_pointer;
 
-			/** @note usually the same as ptrdiff_t */
+			/* usually the same as ptrdiff_t */
 			typedef	typename	allocator_type::difference_type			difference_type;
-			/** @note usually the same as size_t */
+			/* usually the same as size_t */
 			typedef	typename	allocator_type::size_type				size_type;
 
-		public:
-		/* member function: constructor / destructor  */
+		private:
+		/* attributes */
+			pointer			_root;
+			pointer			_null;
+			value_compare	_comp;
 
+		public:
+		/* member function: constructor / destructor */
 			RBT(value_compare const & comp = value_compare()) : _comp(comp) {
 				_null = allocator_type().allocate(1);
 				allocator_type().construct(_null, node_type());
@@ -522,13 +520,6 @@ namespace ft
 				allocator_type().destroy(root);
 				allocator_type().deallocate(root, 1);
 			}
-
-		private:
-		/* attributes */
-
-			pointer			_root;
-			pointer			_null;
-			value_compare	_comp;
 	};
 
 }
