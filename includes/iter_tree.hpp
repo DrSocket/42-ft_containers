@@ -148,7 +148,6 @@ namespace ft
 	bool operator!= (const treeIterator<_TL, _Node> & lhs, const treeIterator<_TR, _Node> & rhs) {
 		return lhs.getNode() != rhs.getNode();
 	}
-
 }
 
 #endif

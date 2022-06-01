@@ -56,6 +56,11 @@ namespace ft
 			typedef				ft::reverse_iterator<iterator>									reverse_iterator;
 			typedef				ft::reverse_iterator<const_iterator>							const_reverse_iterator;
 
+		private:
+		/* attributes */
+			ft::RBT<value_type, value_compare>	_rbt;
+		
+		public:
 		/* member function: constructor / destructor */
 
 		/* constructs an empty container, with no elements. */
@@ -132,23 +137,8 @@ namespace ft
 
 		/* member functions: modifiers */
 		
-			/**
-			 * @brief insert elements
-			 * @note extends the container by inserting new elements,
-			 * effectively increasing the container size by the number of elements inserted.
-			 * 
-			 * @param val: value to be copied to (or moved as) the inserted element.
-			 * @param position: hint for the position where the element can be inserted.
-			 * @param first, last: iterators specifying a range of elements.
-			 * Copies of the elements in the range [first,last) are inserted in the container.
-			 * @return the single element versions (1) return a pair,
-			 * with its member pair::first set to an iterator pointing to either the newly inserted element
-			 * or to the element with an equivalent key in the map.
-			 * The pair::second element in the pair is set to true if a new element was inserted or
-			 * false if an equivalent key already existed.
-			 * @return the versions with a hint (2) return an iterator pointing to either
-			 * the newly inserted element or to the element that already had an equivalent key in the map.
-			 */
+			/* extends the container by inserting new elements,
+			 * effectively increasing the container size by the number of elements inserted. */
 			ft::pair<iterator, bool> insert(const value_type& val) {
 				if (_rbt.insert(val) == false)
 					return ft::make_pair(find(val.first), false);
@@ -166,17 +156,7 @@ namespace ft
 					insert(*first);
 			}
 
-			/**
-			 * @brief erase elements
-			 * @note removes from the map container either a single element or a range of elements ([first,last)).
-			 * 
-			 * @param position: iterator pointing to a single element to be removed from the map.
-			 * @param k: key of the element to be removed from the map.
-			 * @param first, last: Iterators specifying a range within the map container to be removed: [first,last).
-			 * i.e., the range includes all the elements between first and last,
-			 * including the element pointed by first but not the one pointed by last.
-			 * @return for the key-based version (2), the function returns the number of elements erased.
-			 */
+			/* removes from the map container either a single element or a range of elements ([first,last)). */
 			void  erase(iterator position) {
 				erase(position->first);
 			}
@@ -195,54 +175,27 @@ namespace ft
 				}
 			}
 	
-			/**
-			 * @brief swap content
-			 * @note exchanges the content of the container by the content of x,
-			 * which is another map of the same type. Sizes may differ.
-			 * 
-			 * @param x: Another map container of the same type as this
-			 * (i.e., with the same template parameters, Key, T, Compare and Alloc)
-			 * whose content is swapped with that of this container.
-			 */
+			/* exchanges the content of the container by the content of x,
+			 * which is another map of the same type. Sizes may differ. */
 			void swap (map& x) { _rbt.swap(x._rbt); }
 
-			/**
-			 * @brief clear content
-			 * @note removes all elements from the map container (which are destroyed),
-			 * leaving the container with a size of 0.
-			 */
+			/* removes all elements from the map container (which are destroyed),
+			 * leaving the container with a size of 0. */
 			void clear() { _rbt.destroyTree(); }
 
 		/* member functions: observers */
 
-			/**
-			 * @brief return key comparison object
-			 * @note Returns a copy of the comparison object used by the container to compare keys.
-			 * 
-			 * @return the comparison object.
-			 */
+			/* Returns a copy of the comparison object used by the container to compare keys. */
 			key_compare	key_comp() const { return key_compare(); }
 			
-			/**
-			 * @brief return value comparison object
-			 * @note Returns a comparison object that can be used to compare two elements to get whether
-			 * the key of the first one goes before the second.
-			 * 
-			 * @return the comparison object for element values.
-			 */
+			/* Returns a comparison object that can be used to compare two elements to get whether
+			 * the key of the first one goes before the second. */
 			value_compare  value_comp() const { return value_compare(key_comp()); }
 
 		/* member functions: operations */
 		
-			/**
-			 * @brief get iterator to element
-			 * @note searches the container for an element with a key equivalent to k and
-			 * returns an iterator to it if found, otherwise it returns an iterator to map::end.
-			 * 
-			 * @param k: key to be searched for.
-			 * @return an iterator to the element,
-			 * if an element with specified key is found, or map::end otherwise.
-			 */
+			/* searches the container for an element with a key equivalent to k and
+			 * returns an iterator to it if found, otherwise it returns an iterator to map::end.*/
 			iterator find(const key_type& k) {
 				return iterator(_rbt.getRoot(), _rbt.searchTree(ft::make_pair(k, mapped_type())), _rbt.getNull());
 			}
@@ -251,30 +204,17 @@ namespace ft
 				return const_iterator(_rbt.getRoot(), _rbt.searchTree(ft::make_pair(k, mapped_type())), _rbt.getNull());
 			}
 
-			/**
-			 * @brief count elements with a specific key
-			 * @note searches the container for elements with a key equivalent to k and returns the number of matches.
-			 * 
-			 * @param k: key to search for.
-			 * @return 1 if the container contains an element whose key is equivalent to k, or zero otherwise.
-			 */
+			/* searches the container for elements with a key equivalent to k and returns the number of matches. */
 			size_type count(const key_type& k) const {
 				if (find(k) == end())
 					return 0;
 				return 1;
 			}
 			
-			/**
-			 * @brief return iterator to lower bound
-			 * @note returns an iterator pointing to the first element in the container
+			/* returns an iterator pointing to the first element in the container
 			 * whose key is not considered to go before k (i.e., either it is equivalent or goes after).
 			 * the function uses its internal comparison object (key_comp) to determine this,
-			 * returning an iterator to the first element for which key_comp(element_key,k) would return false.
-			 * 
-			 * @param k: key to search for.
-			 * @return an iterator to the the first element in the container
-			 * whose key is not considered to go before k, or map::end if all keys are considered to go before k.
-			 */
+			 * returning an iterator to the first element for which key_comp(element_key,k) would return false. */
 			iterator lower_bound(const key_type& k) {
 				return iterator(_rbt.getRoot(), _rbt.lower_bound(ft::make_pair(k, mapped_type())), _rbt.getNull());
 			}
@@ -283,17 +223,10 @@ namespace ft
 				return const_iterator(_rbt.getRoot(), _rbt.lower_bound(ft::make_pair(k, mapped_type())), _rbt.getNull());
 			}
 
-			/**
-			 * @brief return iterator to upper bound
-			 * @note returns an iterator pointing to the first element in the container
+			/* returns an iterator pointing to the first element in the container
 			 * whose key is considered to go after k.
 			 * the function uses its internal comparison object (key_comp) to determine this,
-			 * returning an iterator to the first element for which key_comp(k,element_key) would return true.
-			 * 
-			 * @param k: key to search for.
-			 * @return an iterator to the the first element in the container
-			 * whose key is considered to go after k, or map::end if no keys are considered to go after k.
-			 */
+			 * returning an iterator to the first element for which key_comp(k,element_key) would return true. */
 			iterator upper_bound(const key_type& k) {
 				return iterator(_rbt.getRoot(), _rbt.upper_bound(ft::make_pair(k, mapped_type())), _rbt.getNull());
 			}
@@ -302,16 +235,8 @@ namespace ft
 				return const_iterator(_rbt.getRoot(), _rbt.upper_bound(ft::make_pair(k, mapped_type())), _rbt.getNull());
 			}
 
-			/**
-			 * @brief get range of equal elements
-			 * @note returns the bounds of a range that includes
-			 * all the elements in the container which have a key equivalent to k.
-			 * 
-			 * @param k: key to search for.
-			 * @return the function returns a pair,
-			 * whose member pair::first is the lower bound of the range (the same as lower_bound),
-			 * and pair::second is the upper bound (the same as upper_bound).
-			 */
+			/* returns the bounds of a range that includes
+			 * all the elements in the container which have a key equivalent to k. */
 			ft::pair<iterator, iterator> equal_range(const key_type& k) {
 				return ft::make_pair<iterator, iterator>(lower_bound(k), upper_bound(k));
 			}
@@ -322,18 +247,8 @@ namespace ft
 
 		/* member functions: allocator */
 		
-			/**
-			 * @brief get allocator
-			 * @note returns a copy of the allocator object associated with the map.
-			 * 
-			 * @return the allocator.
-			 */
+			/* returns a copy of the allocator object associated with the map. */
 			allocator_type get_allocator() const { return allocator_type(); }
-
-		private:
-		/* attributes */
-
-			ft::RBT<value_type, value_compare>	_rbt;
 	};
 	
 	/* non-member function: map */
