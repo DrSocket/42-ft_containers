@@ -1,10 +1,6 @@
 #include "Test.hpp"
 #include <deque>
 
-void	printTitle(std::string const & title) {
-	std::cout << "-- [" << title << "] --" << std::endl;
-	std::cout << std::endl;
-}
 
 template < class T >
 void	printSize(ft::vector<T> vec) {
@@ -19,7 +15,6 @@ void	printSize(ft::vector<T> vec) {
 */
 
 void	constructTest(void) {
-	printTitle("Constructor");
 
 	std::cout << "empty test: int:\n";
 	ft::vector<int> vecInt;
@@ -61,7 +56,6 @@ void	constructTest(void) {
 */
 
 void	iteratorTest(void) {
-	printTitle("Iterator");
 
 	ft::vector<int> vecInt;
 	vecInt.push_back(1);
@@ -108,7 +102,6 @@ void	iteratorTest(void) {
 */
 
 void	sizeTest(void) {
-	printTitle("Size/Max_size/Capacity");
 	
 	ft::vector<int> vecInt;
 	std::cout << "int: ";
@@ -138,7 +131,6 @@ void	sizeTest(void) {
 */
 
 void	resizeTest(void) {
-	printTitle("resize/reserve");
 
 	std::cout << "int: ";
 	ft::vector<int> vecInt;
@@ -204,7 +196,6 @@ void	resizeTest(void) {
 */
 
 void	emptyTest(void) {
-	printTitle("Empty");
 
 	std::cout << "int: ";
 	ft::vector<int> vecInt;
@@ -234,7 +225,6 @@ void	emptyTest(void) {
 */
 
 void	elementAccessTest(void) {
-	printTitle("Element access");
 
 	std::cout << "int: assign 0 -> 42";
 	ft::vector<int> vecInt;
@@ -324,7 +314,6 @@ void	elementAccessTest(void) {
 */
 
 void	assignTest(void) {
-	printTitle("Assign");
 
 	std::cout << "int: \n";
 	ft::vector<int> vecInt;
@@ -365,7 +354,6 @@ void	assignTest(void) {
 */
 
 void	pbTest(void) {
-	printTitle("push_back/pop_back");
 
 	std::cout << "int: \n";
 	ft::vector<int> vecInt;
@@ -416,7 +404,6 @@ void	pbTest(void) {
 */
 
 void	insertTest(void) {
-	printTitle("insert");
 
 	std::cout << "Test: \n";
 	ft::vector<Test> vecTest;
@@ -483,7 +470,6 @@ void	insertTest(void) {
 */
 
 void	eraseTest(void) {
-	printTitle("erase");
 
 	std::cout << "int: + 0 -> 42\n";
 	ft::vector<int> vecInt;
@@ -523,7 +509,6 @@ void	eraseTest(void) {
 */
 
 void	swapTest(void) {
-	printTitle("swap");
 
 	std::cout << "int1: + 0 -> 42: ";
 	ft::vector<int> vecInt;
@@ -614,7 +599,6 @@ void	swapTest(void) {
 */
 
 void	clearTest(void) {
-	printTitle("clear");
 
 	std::cout << "int: + 0 -> 42: ";
 	ft::vector<int> vecInt;

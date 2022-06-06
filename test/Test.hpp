@@ -10,19 +10,19 @@
 	#include <vector>
 	#include <stack>
 	#include <map>
-	// #include <set>
+	#include <set>
 	namespace ft = std;
 #else
 	#include "vector.hpp"
 	#include "stack.hpp"
 	#include "map.hpp"
-	// #include "set.hpp"
+	#include "set.hpp"
 #endif
 
 void vectorTest();
 void stackTest();
 void mapTest();
-// void setTest();
+void setTest();
 
 class Test {
 	public:

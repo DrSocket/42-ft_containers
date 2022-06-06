@@ -2,11 +2,6 @@
 #include <deque>
 #include <list>
 
-void	stack_printTitle(std::string const & title) {
-	std::cout << "-- [" << title << "] --" << std::endl;
-	std::cout << std::endl;
-}
-
 template < class T, class Container >
 void	stack_printSize(ft::stack<T, Container> stack) {
 	std::cout << "size: " << stack.size() << std::endl;
@@ -18,7 +13,6 @@ void	stack_printSize(ft::stack<T, Container> stack) {
  */
 
 void	stack_constructTest(void) {
-	stack_printTitle("Constructor");
 
 	std::cout << "construct empty stk:\n";
 	ft::stack<int> stk;
@@ -47,7 +41,6 @@ void	stack_constructTest(void) {
  */
 
 void	stack_emptyTest(void) {
-	stack_printTitle("Empty");
 
 	std::cout << "construct empty stk:\n";
 	ft::stack<int> stk;
@@ -66,7 +59,6 @@ void	stack_emptyTest(void) {
  */
 
 void	stack_sizeTest(void) {
-	stack_printTitle("Size");
 
 	std::cout << "construct empty stk:\n";
 	ft::stack<int> stk;
@@ -86,7 +78,6 @@ void	stack_sizeTest(void) {
  */
 
 void	stack_topTest(void) {
-	stack_printTitle("Top");
 
 	std::cout << "construct empty stk:\n";
 	ft::stack<int> stk;
@@ -104,7 +95,6 @@ void	stack_topTest(void) {
  */
 
 void	stack_pbTest(void) {
-	stack_printTitle("Push/Pop");
 
 	std::cout << "construct empty stk:\n";
 	ft::stack<int> stk;

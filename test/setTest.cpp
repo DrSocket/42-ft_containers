@@ -2,11 +2,6 @@
 #include <iostream>
 #include <string>
 
-void	setprintTitle(std::string const & title) {
-	std::cout << "-- [" << title << "] --" << std::endl;
-	std::cout << std::endl;
-}
-
 template < class T >
 void	setprintSize(ft::set<T> s) {
 	std::cout << "size: " << s.size() << std::endl;
@@ -30,7 +25,6 @@ struct classcomp { bool operator() (const int& lhs, const int& rhs) const { retu
  */
 
 void	setconstructTest(void) {
-	setprintTitle("Constructor");
 
 	std::cout << "empty construct:\n";
 	ft::set<int> s1;
@@ -74,7 +68,6 @@ void	setconstructTest(void) {
 */
 
 void	setiteratorTest(void) {
-	setprintTitle("Iterator");
 
 	int i[] = {10, 20, 30, 40, 50};
 	std::cout << "range: i -> i + 5:\n";
@@ -110,7 +103,6 @@ void	setiteratorTest(void) {
 */
 
 void	setemptyTest(void) {
-	setprintTitle("Empty");
 
 	std::cout << "set<int>\n";
 	ft::set<int> s1;
@@ -138,7 +130,6 @@ void	setemptyTest(void) {
 */
 
 void	setsizeTest(void) {
-	setprintTitle("Size/Max_size");
 
 	std::cout << "set<int>\n";
 	ft::set<int> s1;
@@ -174,7 +165,6 @@ void	setsizeTest(void) {
 */
 
 void	setinsertTest(void) {
-	setprintTitle("insert");
 
 	std::cout << "set<int>\n";
 	ft::set<int> s1;
@@ -270,7 +260,6 @@ void	setinsertTest(void) {
 */
 
 void	seteraseTest(void) {
-	setprintTitle("erase");
 
 	std::cout << "set<int>\n";
 	ft::set<int> s1;
@@ -329,7 +318,6 @@ void	seteraseTest(void) {
 */
 
 void	setswapTest(void) {
-	setprintTitle("swap");
 
 	std::cout << "set<int>\n";
 	ft::set<int> s1;
@@ -374,7 +362,6 @@ void	setswapTest(void) {
 */
 
 void	setclearTest(void) {
-	setprintTitle("clear");
 
 	ft::set<int> s1;
 
@@ -417,7 +404,6 @@ void	setclearTest(void) {
 */
 
 void	setkeyCompTest(void) {
-	setprintTitle("keyComp");
 
 	ft::set<int> s1;
 	ft::set<int>::key_compare s1Comp = s1.key_comp();
@@ -447,7 +433,6 @@ void	setkeyCompTest(void) {
 */
 
 void	setvalueCompTest(void) {
-	setprintTitle("valueComp");
 
 	ft::set<int> s1;
 	ft::set<int>::key_compare s1Comp = s1.value_comp();
@@ -477,7 +462,6 @@ void	setvalueCompTest(void) {
 */
 
 void	setfindTest(void) {
-	setprintTitle("find");
 	
 	ft::set<int> s1;
 	ft::set<int>::iterator it;
@@ -513,7 +497,6 @@ void	setfindTest(void) {
 */
 
 void	setcountTest(void) {
-	setprintTitle("count");
 
 	ft::set<int> s1;
 
@@ -541,7 +524,6 @@ void	setcountTest(void) {
 */
 
 void	setboundTest(void) {
-	setprintTitle("lowerBound/upperBound");
 
 	ft::set<int> s1;
 	ft::set<int>::iterator itlow;
@@ -574,7 +556,6 @@ void	setboundTest(void) {
 */
 
 void	setequalRangeTest(void) {
-	setprintTitle("equalRange");
 
 	ft::set<int> s1;
 

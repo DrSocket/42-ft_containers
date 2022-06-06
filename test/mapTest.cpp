@@ -2,11 +2,6 @@
 #include <iostream>
 #include <string>
 
-void	printMapTitle(std::string const & title) {
-	std::cout << "-- [" << title << "] --" << std::endl;
-	std::cout << std::endl;
-}
-
 template < class Key, class T >
 void	printSize(ft::map<Key, T> m) {
 	std::cout << "size: " << m.size() << std::endl;
@@ -30,7 +25,6 @@ struct classcomp { bool operator() (const char& lhs, const char& rhs) const { re
  */
 
 void	mapconstructTest(void) {
-	printMapTitle("Constructor");
 
 	std::cout << "basic construct: + (a, 10) (b, 20) (c, 30) (d, 40):\n";
 	ft::map<char, int> m1;
@@ -78,7 +72,6 @@ void	mapconstructTest(void) {
 */
 
 void	mapiteratorTest(void) {
-	printMapTitle("Iterator");
 
 	std::cout << "basic construct: + (a, 10) (b, 20) (c, 30) (d, 40):\n";
 	ft::map<char, int> m1;
@@ -117,7 +110,6 @@ void	mapiteratorTest(void) {
 */
 
 void	mapemptyTest(void) {
-	printMapTitle("Empty");
 
 	std::cout << "map<char, int>\n";
 	ft::map<char, int> m1;
@@ -145,7 +137,6 @@ void	mapemptyTest(void) {
 */
 
 void	mapsizeTest(void) {
-	printMapTitle("Size/Max_size");
 
 	std::cout << "map<int, int>\n";
 	ft::map<int, int> m1;
@@ -177,7 +168,6 @@ void	mapsizeTest(void) {
 */
 
 void	mapelementAccessTest(void) {
-	printMapTitle("Element access");
 	
 	std::cout << "map<char, int>\n";
 	ft::map<char, int> m1;
@@ -238,7 +228,6 @@ void	mapelementAccessTest(void) {
 */
 
 void	mapinsertTest(void) {
-	printMapTitle("insert");
 
 	std::cout << "map<char, int>\n";
 	ft::map<char, int> m1;
@@ -334,7 +323,6 @@ void	mapinsertTest(void) {
 */
 
 void	maperaseTest(void) {
-	printMapTitle("erase");
 
 	std::cout << "map<char, int>\n";
 	ft::map<char, int> m1;
@@ -393,7 +381,6 @@ void	maperaseTest(void) {
 */
 
 void	mapswapTest(void) {
-	printMapTitle("swap");
 
 	std::cout << "map<char, int>\n";
 	ft::map<char, int> m1;
@@ -438,7 +425,6 @@ void	mapswapTest(void) {
 */
 
 void	mapclearTest(void) {
-	printMapTitle("clear");
 
 	ft::map<char, int> m1;
 
@@ -481,7 +467,6 @@ void	mapclearTest(void) {
 */
 
 void	mapkeyCompTest(void) {
-	printMapTitle("keyComp");
 
 	ft::map<char, int> m1;
 	ft::map<char, int>::key_compare m1Comp = m1.key_comp();
@@ -514,7 +499,6 @@ void	mapkeyCompTest(void) {
 */
 
 void	mapvalueCompTest(void) {
-	printMapTitle("valueComp");
 
 	ft::map<char, int> m1;
 
@@ -546,7 +530,6 @@ void	mapvalueCompTest(void) {
 */
 
 void	mapfindTest(void) {
-	printMapTitle("find");
 	
 	ft::map<char, int> m1;
 	ft::map<char, int>::iterator it;
@@ -586,7 +569,6 @@ void	mapfindTest(void) {
 */
 
 void	mapcountTest(void) {
-	printMapTitle("count");
 
 	ft::map<char, int> m1;
 	char c;
@@ -618,7 +600,6 @@ void	mapcountTest(void) {
 */
 
 void	mapboundTest(void) {
-	printMapTitle("lowerBound/upperBound");
 
 	ft::map<char, int> m1;
 	ft::map<char, int>::iterator itlow;
@@ -658,7 +639,6 @@ void	mapboundTest(void) {
 */
 
 void	mapequalRangeTest(void) {
-	printMapTitle("equalRange");
 
 	ft::map<char, int> m1;
 
