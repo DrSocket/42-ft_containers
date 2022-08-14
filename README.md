@@ -1,4 +1,4 @@
-# ft_containers ![lucisanc's 42 ft_containers Score](https://badge42.vercel.app/api/v2/cl3vpat6c006909l0j733osv1/project/2572478)
+# ft_containers
 
 The purpose of this project is to implement a few containers of the C++ Standard Library.
 
